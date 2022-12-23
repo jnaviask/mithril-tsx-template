@@ -47,8 +47,31 @@ export const jsx = createElement;
 
 export type ResultNode<A = {}> = { attrs: A, children: Children };
 
+const REACT_INTERNAL_PROPS = [
+  'props',
+  'context',
+  'refs',
+  'updater',
+  '_reactInternals',
+  '_reactInternalInstance',
+  'state'
+]
+
 export abstract class ClassComponent<A = {}> extends ReactComponent<A & { children?: Children }> {
   protected readonly __props: A;
+
+  constructor(props) {
+    super(props);
+    return new Proxy(this, {
+      set(obj, prop, value) {
+        if (!REACT_INTERNAL_PROPS.includes(prop as string)) {
+          obj.setState({ ...obj.state, [prop]: value })
+        }
+        //@ts-ignore
+        return Reflect.set(...arguments);
+      }
+    })
+  }
 
   public componentDidMount() {
     this.oninit({ attrs: this.props, children: this.props.children });
