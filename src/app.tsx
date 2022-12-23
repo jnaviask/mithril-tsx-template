@@ -13,7 +13,7 @@ export class App extends ClassComponent {
 
 	view() {
 		return (
-			<div class="container pt-2">
+			<div className="container pt-2">
 				<h1>Mithril Typescript Starter Template</h1>
 
 				<p>

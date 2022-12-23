@@ -21,7 +21,7 @@ export class ButtonCounter extends ClassComponent<IAttrs> {
 
 	view(vnode: ResultNode<IAttrs>) {
 		return (
-			<button onclick={() => this.handleClick(vnode.attrs.onClicked)} class="btn btn-outline-secondary">
+			<button onClick={() => this.handleClick(vnode.attrs.onClicked)} className="btn btn-outline-secondary">
 				{vnode.attrs.name} - You clicked me {this.count} times
 			</button>
 		);

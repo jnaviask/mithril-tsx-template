@@ -13,11 +13,12 @@ import {
   FunctionComponent,
   ReactNode,
   // eslint-disable-next-line import/no-unresolved
-  Component as ReactComponent
+  Component as ReactComponent,
 } from 'react';
 import {
   matchPath,
 } from 'react-router-dom';
+import { createRoot } from 'react-dom/client';
 
 // RENDERING FUNCTIONS
 export type Children = ReactNode | ReactNode[];
@@ -82,13 +83,13 @@ export function redraw(sync = false) {
 export function rootRender(el: Element, vnodes: Children) {
   // React does not have a built-in method for rendering to an element directly.
   // Instead, you can use the `ReactDOM.render` method to render a React component to an element.
-  ReactDOM.render(vnodes, el);
+  // ReactRender(vnodes, el);
 }
 
 export function rootMount(element: Element, component?: any | null) {
   // React does not have a built-in method for mounting a component to an element directly.
   // Instead, you can use the `ReactDOM.render` method to render a React component to an element.
-  ReactDOM.render(component, element);
+  createRoot(element).render(component);
 }
 
 // ROUTING FUNCTIONS
