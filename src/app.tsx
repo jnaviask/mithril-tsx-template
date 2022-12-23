@@ -1,9 +1,11 @@
-import m from 'mithril';
+/* @jsx jsx */
+
 import { ButtonCounter } from './app/ButtonCounter';
+import { ClassComponent, jsx } from './mithrilInterop';
 
 import './style.scss';
 
-export class App {
+export class App extends ClassComponent {
 
 	onChildClicked(e: number) {
 		console.warn('callback from parent triggered', e);

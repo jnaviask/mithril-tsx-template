@@ -1,4 +1,4 @@
-import m from 'mithril';
+import { rootMount } from './mithrilInterop';
 import { App } from './app';
 
-m.mount(document.body as HTMLElement, App);
+rootMount(document.body as HTMLElement, App);
